@@ -34,7 +34,8 @@ namespace NLayerProject.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        //api/Categories/id
+        public async Task<IActionResult> GetById(int id)//http attirubute sade değilse FromBody kullanamayız
         {
             var category = await _categoryService.GetByIdAsync(id);
             return Ok(_mapper.Map<CategoryDto>(category));
@@ -49,7 +50,7 @@ namespace NLayerProject.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(CategoryDto categoryDto)
+        public async Task<IActionResult> Save([FromBody]CategoryDto categoryDto)
         {
             await _categoryService.AddAsync(_mapper.Map<Category>(categoryDto));
 
@@ -57,8 +58,8 @@ namespace NLayerProject.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update(CategoryDto categoryDto)
-
+        //api/Categories //put methodu ile
+        public IActionResult Update([FromBody] CategoryDto categoryDto)//FromBody kullanarak CategoryDto değerinin bağlanmasını sağlarız. //api/Categories //put methodu ile // güvenlik önlemi 
         {
             var category = _categoryService.Update(_mapper.Map<Category>(categoryDto));
 
@@ -66,7 +67,7 @@ namespace NLayerProject.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Remove(int id)
+        public IActionResult Remove( int id)
         {
             var category = _categoryService.GetByIdAsync(id).Result;
             _categoryService.Remove(category);
