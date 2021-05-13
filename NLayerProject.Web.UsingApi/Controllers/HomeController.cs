@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NLayerProject.Web.UsingApi.Filters;
+using NLayerProject.Web.UsingApi.Helper;
 using NLayerProject.Web.UsingApi.Models;
 using System;
 using System.Collections.Generic;
@@ -18,11 +20,13 @@ namespace NLayerProject.Web.UsingApi.Controllers
             _logger = logger;
         }
 
+        [SessionControl]//Bu belirttiğimiz session bilgisine göre çalışır
         public IActionResult Index()
         {
             return View();
         }
 
+        [RolControl(RolesEnum.Admin)]//Burada da sessionda cektiğimiz rol bilgilerinde admin var ise girebilir.
         public IActionResult Privacy()
         {
             return View();

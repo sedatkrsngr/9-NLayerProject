@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NLayerProject.API\NLayerProject.API.csproj" />
+    <ProjectReference Include="..\NLayerProject.Core\NLayerProject.Core.csproj" />
+    <ProjectReference Include="..\NLayerProject.Data\NLayerProject.Data.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLayerProject.Web.UsingApi.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,13 @@ namespace NLayerProject.Web.UsingApi
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<NotFoundFilter>();//Filter
+
             services.AddControllersWithViews();
+
+            services.AddSession(options => {//session timeout süresi belirttik
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -39,13 +46,14 @@ namespace NLayerProject.Web.UsingApi
 
             app.UseRouting();
 
+            app.UseSession();//session kullanýmý için gerekli
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Categories}/{action=Index}/{id?}");
             });
         }
     }
