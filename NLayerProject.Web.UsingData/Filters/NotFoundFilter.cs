@@ -32,6 +32,8 @@ namespace NLayerProject.Web.UsingData.Filters
             {
                 ErrorDto errorDto = new ErrorDto();
 
+                errorDto.Status = 404;
+
                 errorDto.Errors.Add($"id'si {id} olan kategori veritabanında bulunamadı");
 
                 context.Result = new RedirectToActionResult("Error", "Home", errorDto);
