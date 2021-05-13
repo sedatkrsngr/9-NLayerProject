@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NLayerProject.Web.UsingData.Filters
 {
-    public class NotFoundFilter :ActionFilterAttribute//Category için bulunamadı kontrolü
+    public class NotFoundFilter : ActionFilterAttribute//Category için bulunamadı kontrolü istersek bunu kullanabileceğimiz tüm kontrolerlar için de kulanabiliriz. Yapmamız gereken OnActionExecutionAsync methoduna girince context.ActionDescriptor.ControllerName ile ayrı ayrı kontrol edebiliriz. Ya da farklı bir Actiona girdikten sonra hata yönetimi kullanmak istiyorsak. Global hata yönetimi kullanabiliriz. Ama global hata yönetimini bizim kontrolümüz dışındaki hatalar için kullanmak daha mantıklı
     {
         private readonly ICategoryService _categoryService;
 
