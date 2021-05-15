@@ -66,5 +66,15 @@ namespace NLayerProject.Data.Repositories
 
             return entity;
         }
+
+        public async Task<IEnumerable<TEntity>> SqlQueryGetListData(string query)
+        {
+            return await _dbSet.FromSqlRaw(query).ToListAsync();
+        }
+
+        public async Task<TEntity> SqlQueryGetData(string query)
+        { 
+            return await _dbSet.FromSqlRaw(query).FirstOrDefaultAsync();
+        }
     }
 }

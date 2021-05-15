@@ -16,12 +16,16 @@ namespace NLayerProject.Data.UnitOfWorks
         private ProductRepository _productRepository;
         private CategoryRepository _categoryRepository;
         private PersonRepository _personRepository;
+        private SampleSqlRepository _sampleSqlRepository;
+      
 
         public IProductRepository Products => _productRepository = _productRepository ?? new ProductRepository(_context);
 
         public ICategoryRepository Categories => _categoryRepository = _categoryRepository ?? new CategoryRepository(_context);
 
         public IPersonRepository Persons => _personRepository = _personRepository ?? new PersonRepository(_context);
+
+        public ISampleSqlRepository SampleSqls => _sampleSqlRepository = _sampleSqlRepository ?? new SampleSqlRepository(_context);
 
         public UnitOfWork(NLayerContext nLayerContext)
         {

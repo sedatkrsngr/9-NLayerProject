@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLayerProject.Core.Models;
+using NLayerProject.Core.NewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,7 @@ namespace NLayerProject.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Person> Persons { get; set; }
+        public DbQuery<SampleSql> sampleSqls { get; set; }//Custom Sorgumuz için kullandık
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,7 +43,11 @@ namespace NLayerProject.Data
             modelBuilder.Entity<Person>().Property(x => x.Id).UseIdentityColumn();
             modelBuilder.Entity<Person>().Property(x => x.Name).HasMaxLength(100);
             modelBuilder.Entity<Person>().Property(x => x.SurName).HasMaxLength(100);
-           //modelBuilder.Entity<Product>().ToTable("Persons");
+            //modelBuilder.Entity<Product>().ToTable("Persons");
+
+
+            modelBuilder.Entity<SampleSql>().HasNoKey();//Custom sorgumuz için eklendi. Mutlaka eklenmeli
+            
         }
 
     }
