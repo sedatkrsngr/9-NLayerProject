@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using NLayerProject.Web.UsingData.Dtos;
+using NLayerProject.Core.NewModels;
 
 namespace NLayerProject.Web.UsingData.Mapping
 {
@@ -25,6 +26,8 @@ namespace NLayerProject.Web.UsingData.Mapping
 
             CreateMap<Product, ProductGetCategoryDto>();
             CreateMap<ProductGetCategoryDto, Product>();
+
+            CreateMap<SampleSqlDto, SampleSql>().ReverseMap();//yukarıdaki gibi iki defa yazmak yerine bu ikisini de bir arada yapar
         }
     }
 }

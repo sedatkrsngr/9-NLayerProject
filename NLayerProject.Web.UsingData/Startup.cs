@@ -42,6 +42,7 @@ namespace NLayerProject.Web.UsingData
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISampleSqlService, SampleSqlService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddDbContext<NLayerContext>(options =>
@@ -76,7 +77,7 @@ namespace NLayerProject.Web.UsingData
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Categories}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

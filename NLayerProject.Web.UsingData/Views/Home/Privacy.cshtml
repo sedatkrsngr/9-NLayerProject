@@ -1,6 +1,28 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model SampleSqlDto
 
-<p>Use this page to detail your site's privacy policy.</p>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sample Sql Data</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>CategoryName</th>
+            <th>ProductName</th>
+            <th>ProductStock</th>
+            <th>ProductPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+
+                <td>@Model.CategoryName</td>
+                <td>@Model.ProductName</td>
+                <td>@Model.ProductStock</td>
+                <td>@Model.ProductPrice</td>
+            </tr>
+
+        
+    </tbody>
+</table>

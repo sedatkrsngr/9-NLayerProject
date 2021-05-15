@@ -1,8 +1,30 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<SampleSqlDto>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Sample Sql Datalar</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>CategoryName</th>
+            <th>ProductName</th>
+            <th>ProductStock</th>
+            <th>ProductPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.CategoryName</td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductStock</td>
+                <td>@item.ProductPrice</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
