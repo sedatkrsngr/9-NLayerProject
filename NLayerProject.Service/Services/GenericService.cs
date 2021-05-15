@@ -64,6 +64,16 @@ namespace NLayerProject.Service.Services
             return await _repository.SingleOrDefaultAsync(predicate);
         }
 
+        public async Task<TEntity> SqlQueryGetData(string query)
+        {
+            return await _repository.SqlQueryGetData(query);
+        }
+
+        public async Task<IEnumerable<TEntity>> SqlQueryGetListData(string query)
+        {
+            return await _repository.SqlQueryGetListData(query);
+        }
+
         public TEntity Update(TEntity entity)
         {
             TEntity updateEntity = _repository.Update(entity);
