@@ -26,5 +26,8 @@ namespace NLayerProject.Core.Services
         void RemoveRange(IEnumerable<TEntity> entities);
 
         TEntity Update(TEntity entity);
+
+        Task<IEnumerable<TEntity>> SqlQueryGetListData(string query);
+        Task<TEntity> SqlQueryGetData(string query);
     }
 }

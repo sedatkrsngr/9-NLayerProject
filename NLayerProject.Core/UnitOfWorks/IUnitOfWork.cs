@@ -12,6 +12,7 @@ namespace NLayerProject.Core.UnitOfWorks
         IProductRepository Products { get; }
         ICategoryRepository Categories { get; }
         IPersonRepository Persons { get; }
+        ISampleSqlRepository SampleSqls { get; }
 
         Task CommitAsync();
 
